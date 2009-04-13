@@ -1,0 +1,525 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0107 
+header_name {.h} 
+code_name {.cxx}
+class EthioCalendarUI {open
+} {
+  decl {CALENDAR type;} {}
+  decl {CALENDAR type_sub;} {}
+  decl {DATE2 Current; //has current date} {}
+  Function {EthioCalendarUI()} {open
+  } {
+    Fl_Window EthioCalendar {
+      label {Ethiopian Calendar} open
+      private xywh {665 49 350 399} type Single hide resizable
+      code0 {\#include "date2.h"}
+      code1 {\#include "EthioCalendar.h"}
+      code2 {\#include <FL/Fl_JPEG_Image.H>}
+      code3 {o->icon(get_icon());}
+    } {
+      Fl_Button b_toggle_type_swap {
+        callback {change_calendar_swap();}
+        private tooltip {Swap main/sub calendar} image {swap16.jpg} xywh {325 20 24 24}
+      }
+      Fl_Button b_toggle_type {
+        callback {change_calendar();}
+        private tooltip {Change main calendar} image {ethiopia32.jpg} deimage {earth32.jpg} xywh {287 20 38 38}
+      }
+      Fl_Button b_toggle_type_sub {
+        callback {change_calendar_sub();}
+        private tooltip {Change sub calendar} image {earth16.jpg} deimage {ethiopia16.jpg} xywh {325 46 24 24}
+      }
+      Fl_Output today {
+        private tooltip {What is today?} xywh {0 70 350 55} type Multiline box DOWN_FRAME labeltype NO_LABEL align 0 textfont 4 textsize 12
+      }
+      Fl_Button go_prev_year {
+        label {@<<}
+        callback {//if(year->value()>year->minimum()){
+Current.PrevYear(type);
+draw();
+//}}
+        private tooltip {Last year} xywh {53 46 25 24}
+      }
+      Fl_Button go_prev_month {
+        label {@<}
+        callback {//if(year->value()>year->minimum() || (year->value()==year->minimum() && month->value()>0)){
+Current.PrevMonth(type);
+draw();
+//}}
+        private tooltip {Last month} xywh {79 46 25 24}
+      }
+      Fl_Button go_yesterday {
+        label {-}
+        callback {Current.Yesterday();
+draw();}
+        private tooltip Yesterday xywh {105 46 25 24}
+      }
+      Fl_Button go_today_button {
+        label Today
+        callback {Current.Today();
+draw();}
+        private tooltip {Go to today} xywh {131 46 74 24}
+      }
+      Fl_Choice month {
+        callback {Current.Month(type,o->value()+1);
+draw();} open
+        private tooltip Month xywh {53 20 152 25} down_box BORDER_BOX labeltype NO_LABEL align 0
+        code0 {\#include "CalendarMonth.h"}
+        class CalendarMonth
+      } {}
+      Fl_Value_Input year {
+        callback {if(o->value()>=o->minimum() && o->value()<=o->maximum()){
+Current.Year(type,(int)o->value());
+draw();
+}else{
+fl_alert("Input a number between 1604 and 9999");
+}}
+        private tooltip Year xywh {206 20 77 25} labeltype NO_LABEL align 0 when 4 minimum 1604 maximum 9999 step 1
+        code0 {\#include <FL/fl_ask.H>}
+      }
+      Fl_Button go_tomorrow {
+        label {+}
+        callback {Current.Tomorrow();
+draw();}
+        private tooltip Tomorrow xywh {206 46 25 24}
+      }
+      Fl_Button go_next_month {
+        label {@>}
+        callback {if(year->value()<year->maximum() || (year->value()==year->maximum() && month->value()< (MAXMONTH(type)-1))){
+Current.NextMonth(type);
+draw();
+}}
+        private tooltip {Next month} xywh {232 46 25 24}
+      }
+      Fl_Button go_next_year {
+        label {@>>}
+        callback {if(year->value()<year->maximum()){
+Current.NextYear(type);
+draw();
+}}
+        private tooltip {Next year} xywh {258 46 25 24}
+      }
+      Fl_Box matrix {
+        callback {int d = atoi(((CalendarCell*)v)->upper->value());
+int y = Year();
+int m = Month();
+Current = DATE2(y,m,d,type);
+draw();}
+        private xywh {0 125 350 250} box BORDER_BOX labeltype NO_LABEL
+        code0 {\#include "CalendarTable.h"}
+        code1 {\#include <stdlib.h>}
+        class CalendarTable
+      }
+      Fl_Value_Output days_from {
+        private xywh {0 411 65 24} labeltype NO_LABEL align 0
+      }
+      Fl_Value_Output days_until {
+        private xywh {0 435 65 23} labeltype NO_LABEL align 0
+      }
+      Fl_Input day_from {
+        label {days from}
+        callback {draw();}
+        private xywh {130 411 110 24}
+      }
+      Fl_Input day_until {
+        label {days until}
+        callback {draw();}
+        private xywh {130 435 110 23}
+      }
+      Fl_Menu_Bar {} {open
+        xywh {0 0 350 20}
+      } {
+        Submenu {} {
+          label File
+          xywh {0 0 62 20} hide deactivate
+        } {
+          MenuItem {} {
+            label {Import Holiday}
+            xywh {0 0 30 20}
+          }
+          MenuItem {} {
+            label {Save Option}
+            xywh {0 0 30 20}
+          }
+          MenuItem {} {
+            label {Load Option}
+            xywh {0 0 30 20}
+          }
+          MenuItem {} {
+            label Exit
+            callback {EthioCalendar->hide();}
+            xywh {0 0 30 20}
+          }
+        }
+        Submenu {} {
+          label Goto
+          xywh {0 0 62 20} hide deactivate
+        } {
+          MenuItem {} {
+            label Today
+            xywh {0 0 30 20} deactivate
+          }
+        }
+        Submenu {} {
+          label Tool open
+          xywh {0 0 62 20}
+        } {
+          MenuItem {} {
+            label Clock
+            callback {ClockDialog *me = new ClockDialog();
+me->show();}
+            xywh {0 0 30 20}
+            code0 {\#include "Fl_Clock_Ethiopia.h"}
+          }
+          MenuItem {} {
+            label {List of Holiday}
+            callback {HolidayListDialog *hld = new HolidayListDialog(Current, type, type_sub);
+hld->show();}
+            xywh {0 0 30 20}
+          }
+        }
+        Submenu {} {
+          label Export open
+          xywh {0 0 62 20}
+          code0 {\#include "CalendarHtml.h"}
+        } {
+          MenuItem {} {
+            label {1 month}
+            callback {CalendarHtml *html = new CalendarHtml(Current,type,type_sub);
+html->draw1();
+delete html;}
+            xywh {0 0 30 20}
+          }
+          MenuItem {} {
+            label {1 month in both calendar}
+            callback {CalendarHtml *html = new CalendarHtml(Current,type,type_sub);
+html->draw1w();
+delete html;}
+            xywh {0 0 30 20}
+          }
+          MenuItem {} {
+            label {2 months}
+            callback {CalendarHtml *html = new CalendarHtml(Current,type,type_sub);
+html->draw2();
+delete html;}
+            xywh {10 10 30 20}
+          }
+          MenuItem {} {
+            label {6 months}
+            callback {CalendarHtml *html = new CalendarHtml(Current,type,type_sub);
+html->draw6();
+delete html;}
+            xywh {0 0 30 20}
+          }
+          MenuItem {} {
+            label {12 months}
+            callback {CalendarHtml *html = new CalendarHtml(Current,type,type_sub);
+html->draw12();
+delete html;}
+            xywh {0 0 30 20} hide deactivate
+          }
+        }
+        Submenu {} {
+          label Help open
+          xywh {0 0 62 20}
+        } {
+          MenuItem {} {
+            label {Help Contents}
+            callback {show_browser("help.htm");}
+            xywh {0 0 30 20}
+            code0 {\#include "os.h"}
+          }
+          MenuItem {} {
+            label Website
+            callback {show_browser(ETHIOCALENDAR_URI);}
+            xywh {0 0 30 20}
+            code0 {\#include "os.h"}
+          }
+          MenuItem {} {
+            label About
+            callback {AboutDialog *me = new AboutDialog();
+me->show();}
+            xywh {0 0 30 20}
+          }
+        }
+      }
+      Fl_Choice day_from_caltype {open
+        private xywh {239 411 111 25} down_box BORDER_BOX labeltype NO_LABEL
+      } {
+        MenuItem {} {
+          label Gregorian
+          xywh {0 0 30 20}
+        }
+        MenuItem {} {
+          label Ethiopian
+          xywh {10 10 30 20}
+        }
+      }
+      Fl_Choice day_until_caltype {open
+        private xywh {239 435 111 23} down_box BORDER_BOX labeltype EMBOSSED_LABEL
+      } {
+        MenuItem {} {
+          label Gregorian
+          xywh {10 10 30 20}
+        }
+        MenuItem {} {
+          label Ethiopian
+          xywh {20 20 30 20}
+        }
+      }
+      Fl_Group {} {open
+        xywh {0 20 55 53}
+      } {
+        Fl_Clock clock {
+          callback {ClockDialog *me = new ClockDialog();
+me->show();}
+          private xywh {0 21 50 50}
+          code0 {\#include "Fl_Clock_Ethiopia.h"}
+          class Fl_Clock_Ethiopia
+        }
+        Fl_Button {} {
+          callback {ClockDialog *me = new ClockDialog();
+me->show();}
+          tooltip {Ethiopian Clock} xywh {0 20 50 50} box NO_BOX
+        }
+      }
+      Fl_Output holiday {
+        private tooltip Holiday xywh {0 374 350 25} color 48 labeltype NO_LABEL align 0 textfont 1 textcolor 1
+      }
+    }
+  }
+  Function {show(int argc, char **argv)} {open
+  } {
+    code {init();
+draw();
+EthioCalendar->show(argc,argv);} {}
+  }
+  Function {init()} {open private
+  } {
+    code {//set window title
+EthioCalendar->label(ETHIOCALENDAR_TITLE);
+//set today
+Current.Today();
+//set calendar type
+type = ETHIOPIAN;
+type_sub = GREGORIAN;
+//set date from/until (only for me)
+DATE1 *d1 = new DATE1(2007,6,19,GREGORIAN);
+day_from->value(d1->print_short());
+DATE1 *d2 = new DATE1(2009,6,18,GREGORIAN);
+day_until->value(d2->print_short());} {}
+  }
+  Function {change_calendar()} {open private
+  } {
+    code {if (type == GREGORIAN){
+	type = ETHIOPIAN;
+}else if (type == ETHIOPIAN){
+	type = ISLAMIC;
+}else {
+	type = GREGORIAN;
+}
+//type = (CALENDAR)(int)(type^1);
+draw();} {}
+  }
+  Function {draw()} {open private
+  } {
+    code {//display today
+today->value(Current.print_date());
+//show days of from/until
+DATE2 dd;
+dd.scan(day_from->value(),(CALENDAR)day_from_caltype->value());
+days_from->value(Current.DiffDate(dd,Current));
+dd.scan(day_until->value(),(CALENDAR)day_until_caltype->value());
+days_until->value(Current.DiffDate(Current,dd));
+//Display month
+month->type(type);
+month->value(Current.Month(type)-1);
+//Display year
+year->value(Current.Year(type));
+//Change calendar icon
+static Fl_JPEG_Image image_moon32("moon32.jpg");
+static Fl_JPEG_Image image_moon16("moon16.jpg");
+if (type==GREGORIAN) {
+      b_toggle_type->image(image_earth32);
+}else if (type==ETHIOPIAN) {
+      b_toggle_type->image(image_ethiopia32);
+}else if (type==ISLAMIC) {
+      b_toggle_type->image(image_moon32);
+}else{
+      b_toggle_type->image();
+}
+if (type_sub==GREGORIAN) {
+      b_toggle_type_sub->image(image_earth16);
+}else if (type_sub==ETHIOPIAN) {
+      b_toggle_type_sub->image(image_ethiopia16);
+}else if (type_sub==ISLAMIC) {
+      b_toggle_type_sub->image(image_moon16);
+}else{
+      b_toggle_type_sub->image();
+}
+//Change clock
+if (type!=ETHIOPIAN) {
+	//Fl::remove_timeout(cb_adjust_ett,clock);
+	clock->mode = TIMEMODE_STANDARD;
+}else{
+	clock->mode = TIMEMODE_ETHIOPIA;
+	//Fl::add_timeout(1.0, cb_adjust_ett,clock);
+}
+//draw calendar matrix
+matrix->draw(Current,type,type_sub);
+//display holiday
+if(Current.IsHoliday()) holiday->value(Current.holiday);
+else holiday->value("");
+EthioCalendar->redraw();} {}
+  }
+  Function {Year()} {open private return_type int
+  } {
+    code {return (int)year->value();} {}
+  }
+  Function {Month()} {open private return_type int
+  } {
+    code {return month->value()+1;} {}
+  }
+  Function {change_calendar_sub()} {open private
+  } {
+    code {if (type_sub == GREGORIAN){
+	type_sub = ETHIOPIAN;
+}else if (type_sub == ETHIOPIAN){
+	type_sub = ISLAMIC;
+}else {
+	type_sub = GREGORIAN;
+}
+//type_sub = (CALENDAR)(int)(type_sub^1);
+draw();} {}
+  }
+  Function {change_calendar_swap()} {open private
+  } {
+    code {CALENDAR temp;
+temp = type_sub;
+type_sub = type;
+type = temp;
+draw();} {}
+  }
+} 
+
+class AboutDialog {open
+} {
+  Function {AboutDialog()} {open
+  } {
+    Fl_Window About {
+      label {About Ethiopian Calendar} open
+      private xywh {138 103 360 145} type Single hide
+      code0 {\#include "EthioCalendar.h"}
+      code1 {o->icon(get_icon());}
+    } {
+      Fl_Box logo {
+        private image {handy.jpg} xywh {6 14 64 64}
+      }
+      Fl_Box title {
+        label {Ethiopian Calendar ver.1.6}
+        private xywh {76 8 280 30} labelsize 20
+        code0 {o->label(ETHIOCALENDAR_TITLE);}
+      }
+      Fl_Box uri {
+        label {http://code.google.com/p/ethiocalendar/}
+        private xywh {76 37 280 18} labelsize 12 labelcolor 4
+        code0 {o->label(ETHIOCALENDAR_URI);}
+      }
+      Fl_Box copyright {
+        label {(c)2008-2009 Yuji DOI. All Rights Reserved.} selected
+        private xywh {76 54 280 18} labelsize 12
+      }
+      Fl_Box {} {
+        label {Icon was designed by Toshiya HANDA.}
+        xywh {76 71 280 18} labelsize 12
+      }
+      Fl_Box {} {
+        label {Special thanks to Takayoshi OGAMI.}
+        xywh {76 88 280 18} labelsize 12
+      }
+      Fl_Box {} {
+        label {Visual designed by Keita AOSHIMA.}
+        xywh {76 105 280 18} labelsize 12
+      }
+      Fl_Box {} {
+        label {Holiday algorithm provided by Yaecob Girmay.}
+        xywh {76 122 280 18} labelsize 12
+      }
+    }
+  }
+  Function {show()} {open
+  } {
+    code {About->show();} {}
+  }
+} 
+
+class ClockDialog {open
+} {
+  Function {ClockDialog()} {open
+  } {
+    Fl_Window Win {
+      label {Ethiopian Clock} open
+      private xywh {551 96 258 183} type Single hide
+      code1 {o->icon(get_icon());}
+    } {
+      Fl_Clock clock_et {
+        label Habisha
+        private image {ethiopia32.jpg} xywh {10 50 100 100} box BORDER_BOX align 1
+        code0 {\#include "Fl_Clock_Ethiopia.h"}
+        code1 {o->mode = TIMEMODE_ETHIOPIA;}
+        class Fl_Clock_Ethiopia
+      }
+      Fl_Output digit_et {
+        private xywh {10 151 100 24} box BORDER_BOX
+      }
+      Fl_Clock clock_ft {
+        label Farenji
+        private image {earth32.jpg} xywh {135 50 100 100} box FLAT_BOX align 1
+        code0 {\#include "Fl_Clock_Ethiopia.h"}
+        code1 {o->mode = TIMEMODE_STANDARD;}
+        class Fl_Clock_Ethiopia
+      }
+      Fl_Output digit_ft {
+        private xywh {135 151 100 24}
+      }
+    }
+  }
+  Function {show()} {open
+  } {
+    code {Fl::add_timeout(1.0, cb_update_clock,this);
+Win->show();} {}
+  }
+  Function {update()} {open private
+  } {
+    code {digit_et->value(clock_et->str());
+digit_ft->value(clock_ft->str());} {}
+  }
+  Function {cb_update_clock(void*v)} {open return_type {static void}
+  } {
+    code {((ClockDialog*)v)->update();
+Fl::repeat_timeout(0.5, cb_update_clock,v);} {}
+  }
+} 
+
+class HolidayListDialog {open
+} {
+  Function {HolidayListDialog(DATE2 c,CALENDAR t,CALENDAR s)} {open
+  } {
+    Fl_Window Win {
+      label {List of Holiday} open
+      private xywh {245 146 480 240} type Single hide resizable
+      code1 {o->icon(get_icon());}
+    } {
+      Fl_Text_Display Text {
+        private xywh {0 0 480 240} box FLAT_BOX textfont 4 textsize 12
+        code0 {\#include "HolidayList.h"}
+      }
+    }
+    code {Fl_Text_Buffer* buf = new HolidayList(c, t, s);
+Text->buffer(buf);} {}
+  }
+  Function {show()} {open
+  } {
+    code {Win->show();} {}
+  }
+} 
