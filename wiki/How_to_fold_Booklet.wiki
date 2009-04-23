@@ -6,7 +6,7 @@
 <td>1
 <td><img src="P1040374.jpg">
 <td>Print out to an A4 papaer
-</tr>
+
 
 <tr>
 <td>2</td>
