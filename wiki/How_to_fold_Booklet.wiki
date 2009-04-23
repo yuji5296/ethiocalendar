@@ -9,52 +9,42 @@
 
 
 <tr>
-<td>2</td>
-<td><img src="P1040375.jpg" alt=""></td>
+<td>2
+<td><img src="P1040375.jpg" alt="">
 <td>Fold
 the paper in half on narrow side.<br>
-Crease it sharply.</td>
-</tr>
-<tr>
-<td>3</td>
-<td><img src="P1040376.jpg" alt=""></td>
-<td>Open
-the paper, and fold it in half on wide side.</td>
-</tr>
-<tr>
-<td align="undefined">4</td>
+Crease it sharply.
 
-<td align="undefined"><img src="P1040377.jpg" alt=""></td>
+<tr>
+<td>3
+<td><img src="P1040376.jpg" alt="">
+<td>Open
+the paper, and fold it in half on wide side.
+<tr>
+<td align="undefined">4
+<td align="undefined"><img src="P1040377.jpg" alt="">
 <td align="undefined">Besides
-fold it in half on narrow side as the cover page faces outside.</td>
-</tr>
+fold it in half on narrow side as the cover page faces outside.
 <tr>
-<td align="undefined">5</td>
-<td align="undefined"><img src="P1040378.jpg" alt=""></td>
+<td align="undefined">5
+<td align="undefined"><img src="P1040378.jpg" alt="">
 <td align="undefined">Cut
-the center of paper.</td>
-</tr>
+the center of paper.
 <tr>
-<td align="undefined">6</td>
-<td align="undefined"><img src="P1040379.jpg" alt=""></td>
+<td align="undefined">6
+<td align="undefined"><img src="P1040379.jpg" alt="">
 <td align="undefined">Open
 the paper.<br>
 
-There is a hole in the center of paper.</td>
-</tr>
+There is a hole in the center of paper.
 <tr>
-<td align="undefined">7</td>
-<td><img src="P1040380.jpg" alt=""></td>
+<td align="undefined">7
+<td><img src="P1040380.jpg" alt="">
 <td>Fold
-the paper like the first step, besides fold it as it makes a cross.</td>
-</tr>
+the paper like the first step, besides fold it as it makes a cross.
 <tr>
-<td>8</td>
-<td><img src="P1040381.jpg" alt=""></td>
+<td>8
+<td><img src="P1040381.jpg" alt="">
 <td>Fold
 the paper as the cover page faces outside.<br>
-Adjust fold, then&nbsp; it is completed.</td>
-
-</tr>
-</tbody>
-</table>
+Adjust fold, then&nbsp; it is completed.
