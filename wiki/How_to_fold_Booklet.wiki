@@ -4,22 +4,22 @@
 <tbody>
 <tr>
 <td>1</td>
-<td align="undefined"><img src="P1040374.jpg" alt=""></td>
-<td align="undefined">Print
+<td><img src="P1040374.jpg" alt=""></td>
+<td>Print
 out to an A4 papaer</td>
 </tr>
 <tr>
 
-<td align="undefined">2</td>
-<td align="undefined"><img src="P1040375.jpg" alt=""></td>
-<td align="undefined">Fold
+<td>2</td>
+<td><img src="P1040375.jpg" alt=""></td>
+<td>Fold
 the paper in half on narrow side.<br>
 Crease it sharply.</td>
 </tr>
 <tr>
-<td align="undefined">3</td>
-<td align="undefined"><img src="P1040376.jpg" alt=""></td>
-<td align="undefined">Open
+<td>3</td>
+<td><img src="P1040376.jpg" alt=""></td>
+<td>Open
 the paper, and fold it in half on wide side.</td>
 </tr>
 <tr>
