@@ -45,3 +45,12 @@
     * Add Islamic calendar
     * Display national holiday
     * Change UI design
+
+1.6.0 => 1.6.1
+
+    * Add List of Holiday
+
+1.6.1 => 1.6.2
+
+    * Change URL of website
+    * Add comments for doxygen
