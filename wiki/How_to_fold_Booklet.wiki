@@ -1,11 +1,11 @@
 <h1>How to fold the Ethiopian Calendar Booklet</h1>
 <br>
-<table style="text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<table border="0" cellpadding="2" cellspacing="2">
 <tbody>
 <tr>
-<td>1</td>
-<td><img src="P1040374.jpg"></td>
-<td>Print out to an A4 papaer</td>
+<td>1
+<td><img src="P1040374.jpg">
+<td>Print out to an A4 papaer
 </tr>
 
 <tr>
