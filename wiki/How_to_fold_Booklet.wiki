@@ -4,12 +4,11 @@
 <tbody>
 <tr>
 <td>1</td>
-<td><img src="P1040374.jpg" alt=""></td>
-<td>Print
-out to an A4 papaer</td>
+<td><img src="P1040374.jpg"></td>
+<td>Print out to an A4 papaer</td>
 </tr>
-<tr>
 
+<tr>
 <td>2</td>
 <td><img src="P1040375.jpg" alt=""></td>
 <td>Fold
