@@ -28,7 +28,7 @@ yaecob: yaecob.o date.o
 	$(CC) $(CFALGS) -c $< $(INCLUDE) -o $@
 
 zip:
-	zip -u ethiocalendar-v1.5.1-linux.zip $(TARGET) openbrowser.sh index_e.htm index_j.htm handy.jpg screenshot.jpg jica.jpg 
+	zip -u ethiocalendar-v1.5.1-linux.zip $(TARGET) openbrowser.sh index_e.htm index_j.htm handy.jpg screenshot.jpg
 	
 install:
 	mkdir -p /usr/share/ethiocalendar
@@ -39,7 +39,6 @@ install:
 	cp help.htm /usr/share/ethiocalendar/.
 	cp handy.jpg /usr/share/ethiocalendar/.
 	cp screenshot.jpg /usr/share/ethiocalendar/.
-	cp jica.jpg /usr/share/ethiocalendar/.
 	cp EthioCalendar /usr/share/ethiocalendar/.
 	cp ethiocalendar.css /usr/share/ethiocalendar/.
 	cp calendar1.css /usr/share/ethiocalendar/.

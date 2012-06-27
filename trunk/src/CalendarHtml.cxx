@@ -200,7 +200,7 @@ void CalendarHtml::make_header(int mode){
 	append("<td id='title'>");
 	append(ETHIOCALENDAR_TITLE);
 	append("</td>");
-	append("<td id='org'><img src='jica.jpg' align='right'></td>");
+	append("<td id='org'></td>");
 	append("</tr></tbody></table>");
 }
 void CalendarHtml::make_footer(){
