@@ -206,7 +206,7 @@ void CalendarHtml::make_header(int mode){
 void CalendarHtml::make_footer(){
 	char str[256];
 	append("<hr>");
-	sprintf(str,"<div id='footer'>&copy;2008-2009 Yuji DOI. &lt;<a href=%s>%s</a>&gt;</div>",ETHIOCALENDAR_URI,ETHIOCALENDAR_URI);
+	sprintf(str,"<div id='footer'>&copy;2008-2012 Yuji DOI. &lt;<a href=%s>%s</a>&gt;</div>",ETHIOCALENDAR_URI,ETHIOCALENDAR_URI);
 	append(str);
 	append("</body>");
 	append("</html>");
