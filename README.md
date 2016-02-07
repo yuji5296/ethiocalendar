@@ -3,7 +3,7 @@ Automatically exported from code.google.com/p/ethiocalendar
 
 In Ethiopia, they use the original calendar which is much different from the Gregorian calendar. Therefore I developed calendar software which it can see both the Gregorian calendar and the Ethiopian calendar in one glance.
 
-![Screenshot](http://ethiocalendar.googlecode.com/files/Screenshot.png)
+
 
 #Caution
 
